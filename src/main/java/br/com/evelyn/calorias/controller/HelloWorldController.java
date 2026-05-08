@@ -10,11 +10,11 @@ public class HelloWorldController {    // ENDPOINT
 
     @GetMapping("/hello")
     public String getHelloWorld(){
-        return "<h1>Hello World!<h1>";
+        return "<h1>Hello World!</h1>";
     }
 
     @GetMapping("/ola")
     public String getOlaMundo(){
-        return "<h1>Olá Mundo!<h1>";
+        return "<h1>Ola mundo!</h1>";
     }
 }

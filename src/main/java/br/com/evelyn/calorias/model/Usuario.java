@@ -1,10 +1,13 @@
 package br.com.evelyn.calorias.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name = "tbl_usuarios")
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +26,7 @@ public class Usuario {
             allocationSize = 1
     )
     @Column(name = "usuario_id")
+    @JsonAlias("usuario_id")
     private Long usuarioId;
 
     private String nome;
