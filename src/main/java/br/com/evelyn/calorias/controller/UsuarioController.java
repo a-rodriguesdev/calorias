@@ -1,9 +1,12 @@
 package br.com.evelyn.calorias.controller;
 
+import br.com.evelyn.calorias.dto.UsuarioCadastroDTO;
+import br.com.evelyn.calorias.dto.UsuarioExibicaoDTO;
 import br.com.evelyn.calorias.model.Usuario;
 import br.com.evelyn.calorias.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,19 +20,25 @@ public class UsuarioController {
 
     @PostMapping("/usuarios")
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario salvar(@RequestBody Usuario usuario) {
-        return usuarioService.salvarUsuario(usuario);
+    public UsuarioExibicaoDTO salvar(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO) {
+
+        return usuarioService.salvarUsuario(usuarioCadastroDTO);
     }
 
     @GetMapping("/usuarios")
     @ResponseStatus(HttpStatus.OK)
-    public List<Usuario> litarTodos() {
+    public List<UsuarioExibicaoDTO> litarTodos() {
+
         return usuarioService.listarTodos();
     }
 
     @GetMapping("/usuarios/{usuarioId}")
-    public Usuario buscarPorId(@PathVariable Long usuarioId) {
-        return usuarioService.buscarPorId(usuarioId);
+    public ResponseEntity<UsuarioExibicaoDTO> buscarPorId(@PathVariable Long usuarioId) {
+        try {
+            return ResponseEntity.ok(usuarioService.buscarPorId(usuarioId));
+        } catch (Exception e) {
+          return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/usuarios/{usuarioId}")
