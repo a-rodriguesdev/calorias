@@ -49,8 +49,8 @@ public class UsuarioController {
 
     @PutMapping("/usuarios")
     @ResponseStatus(HttpStatus.OK)
-    public Usuario atualizar(@RequestBody Usuario usuario) {
-        return usuarioService.atualizar(usuario);
+    public UsuarioExibicaoDTO atualizar(@RequestBody Usuario usuario) {
+        return new UsuarioExibicaoDTO(usuarioService.atualizar(usuario));
     }
 
 }

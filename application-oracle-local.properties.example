@@ -1,0 +1,6 @@
+# Copie este arquivo para: application-oracle-local.properties (raiz do projeto, ao lado do pom.xml).
+# O arquivo real NUNCA deve ser commitado (esta linha só existe no .example versionado).
+#
+# Opcional se você já definir SPRING_DATASOURCE_PASSWORD no ambiente (preferível em CI/servidor).
+
+spring.datasource.password=SUA_SENHA

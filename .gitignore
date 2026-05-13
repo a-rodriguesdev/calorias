@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Senha Oracle (perfil oracle); copie de application-oracle-local.properties.example
+application-oracle-local.properties
